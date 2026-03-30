@@ -75,7 +75,12 @@ idRegistro INT AUTO_INCREMENT PRIMARY KEY,
 luminosidade INT NOT NULL,
 	CONSTRAINT chk_luminosidade_registro 
 	    CHECK (luminosidade >= 0),
-dataLeitura DATETIME DEFAULT NOW()
+dataLeitura DATETIME DEFAULT NOW(),
+fkSensor INT, 
+CONSTRAINT 
+	FOREIGN KEY (fkSensor) 
+    REFERENCES greenlight.sensor (idSensor)
+	
 );
 
 CREATE TABLE alerta (
@@ -88,7 +93,10 @@ CONSTRAINT
     REFERENCES greenlight.sensor (idSensor),
 qtdLumi INT NOT NULL,
 	CONSTRAINT chk_luminosidade_registro 
-	    CHECK (qtdLumi IN (qtdLumi >1000 AND qtdLumi < 200))
+	    CHECK (qtdLumi IN (qtdLumi >1000 AND qtdLumi < 200)),, 
+CONSTRAINT 
+		FOREIGN KEY (qtdLumi)
+		REFERENCES greenlitgh.registroLuminosidade (luminosidade)
 
 );
 
@@ -100,5 +108,9 @@ quantidadeProduzida INT NOT NULL,
 quantidadePerdida INT NOT NULL,
     CONSTRAINT chk_quantidade_perdida 
 	  CHECK (quantidadePerdida >= 0),
-dtProducao DATETIME DEFAULT CURRENT_TIMESTAMP
+dtProducao DATETIME DEFAULT CURRENT_TIMESTAMP,
+fkSetor INT, 
+CONSTRAINT
+	FOREIGN KEY (fkSetor) 
+	REFERENCES greenlight.setor (idSetor)
 );
