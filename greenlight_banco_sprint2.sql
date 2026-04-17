@@ -69,9 +69,15 @@ luminosidade INT NOT NULL,
 dataLeitura DATETIME DEFAULT NOW(),
 fkSensor INT,
 CONSTRAINT chFkSensor
-FOREIGN KEY (chFkSensor) REFERENCES sensor(idSensor)
+FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
 );
+INSERT INTO sensor (idSensor, codigoSensor)VALUES
+(1,'E4');
 
 SELECT * FROM registroLuminosidade;
+
+
+
+
 
 
