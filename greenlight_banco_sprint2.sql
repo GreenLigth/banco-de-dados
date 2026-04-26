@@ -69,8 +69,7 @@ fkSensor INT,
 CONSTRAINT chFkSensor
 FOREIGN KEY (fkSensor) REFERENCES sensor(idSensor)
 );
-INSERT INTO sensor (idSensor, codigoSensor)VALUES
-(1,'E4');
+
 
 SELECT * FROM registroLuminosidade;
 
@@ -94,20 +93,24 @@ INSERT INTO estufa (nomeEstufa, fkSetor) VALUES
 ('Agroface', 3);
 
 INSERT INTO usuario (nome, email, senha, fkEmpresa, statusPerfil, nivelAcesso) VALUES
-('Administrador Geral', 'admin@estufasverdes.com', '12345678', 1, true, 3),
-('Supervisor Estufas', 'supervisor@estufasverdes.com', '12345678', 1, true, 2),
-('Bruno Martins', 'bruno@hortiplus.com', '12345678', 2, true, 3),
-('Patricia Lima', 'patricia@verdevida.com', '12345678', 3, true, 3),
-('Eduardo Souza', 'eduardo@campofresco.com', '12345678', 4, true, 3);
+('Esther Nascimento', 'esther.nascimento@estufasverdes.com', '12345678', 1, true, 3),
+('Max Araujo', 'max.araujo@estufasverdes.com', '12345678', 1, true, 2),
+('Julia Santos', 'bruno@estufasverdes.com', '12345678', 1, true, 3),
+('Luiza Moreno', 'luiza.morenos@estufasverdes.com', '12345678', 1, false, 1),
+('Nicole Cristina', 'nicole.cristina@estufasverdes.com', '12345678', 1, false, 3),
+('Thamyres Batista', 'thamyres.batista@estufasverdes.com', '12345678', 1, false, 3),
+('Clara Salomão', 'clara.salomao@estufasverdes.com', '12345678', 1, true, 3),
+('Fernando Brandão', 'fernando.brandao@estufasverdes.com', '12345678', 1, true, 2);
+
 
 INSERT INTO sensor (codigoSensor, fkEstufa, situacao, corredor, bloco) VALUES
-('LDR001', 7, true, 'A', '1'),
-('LDR002', 8, true, 'B', '1'),
-('LDR003', 8, true, 'C', '1'),
-('LDR004', 8, true, 'A', '2'),
-('LDR005', 9, true, 'B', '2'),
-('LDR006', 9, true, 'C', '2'),
-('LDR007', 9, true, 'C','2');
+('E5', 1, true, 'A', '1'),
+('E6', 2, true, 'B', '1'),
+('E7', 2, true, 'C', '1'),
+('E8', 2, true, 'A', '2'),
+('E9', 3, true, 'B', '2'),
+('E1', 3, true, 'C', '2'),
+('E2', 3, true, 'C','2');
 
 SELECT
 	emp.nome AS empresa,
@@ -206,7 +209,6 @@ JOIN registroLuminosidade AS reg
 	ON sen.idSensor = reg.fkSensor
 WHERE emp.nome = 'Estufas Verdes';
 
-SELECT * FROM estufa;
 
 
 
